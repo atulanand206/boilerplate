@@ -1,9 +1,19 @@
 package com.creations.funds;
 
+import com.creations.funds.exceptions.ServiceException;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
+
 public class Preconditions {
 
     public static void validateNotNull(Object field) {
         if (field == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateIsNotEmpty(String field) {
+        if (StringUtils.isEmpty(field)) {
             throw new IllegalArgumentException();
         }
     }
@@ -22,7 +32,7 @@ public class Preconditions {
 
     public static void validateIsTrue(boolean expression, String message) {
         if (!expression) {
-            throw new IllegalArgumentException(message);
+            throw new ServiceException(message, HttpStatus.BAD_REQUEST);
         }
     }
 }

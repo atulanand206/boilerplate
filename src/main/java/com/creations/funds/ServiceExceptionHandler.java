@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import javax.servlet.ServletException;
 import java.time.Instant;
 
-@Order(Ordered.HIGHEST_PRECEDENCE)
 @ControllerAdvice
 public class ServiceExceptionHandler extends ResponseEntityExceptionHandler {
 
